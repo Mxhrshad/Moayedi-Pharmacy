@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {  
+    font-family: 'sahel';  
+    src: url('./assets/fonts/sahel/Sahel.ttf') format('truetype');  
+    font-weight: normal;  
+    font-style: normal;  
+}  
+
 @theme{
     --color-primary: #7f9169
 }
+
