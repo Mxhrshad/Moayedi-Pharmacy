@@ -1,7 +1,7 @@
 import AboutUs from "../../components/About Us/AboutUs";
 import ServicesSection from "../../components/Service Section/ServiceSection";
 import Address from "../../components/Address/Address";
-import ContactUs from "../../components/Contact Us/ContactUs";
+import ContactUs from "../../components/Footer/Footer";
 import Container from "../../components/Container/Container";
 import Header from "../../components/Header/Header";
 
@@ -21,7 +21,7 @@ export default function Home(){
                 </Container>
             </div>
 
-            <div className=" w-full h-150 flex justify-center items-center">            
+            <div className=" w-full h-auto flex justify-center items-center">            
                 <Container>
                     <AboutUs />
                 </Container>
