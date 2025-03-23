@@ -1,36 +1,96 @@
-import { motion } from "framer-motion";
-import Container from "../Container/Container";
+import { useState } from "react";
+import { Link } from "react-scroll";
+import Logo from "../../assets/pictures/logo.png"
 
 export default function Navbar() {
-    return (
-        <motion.div 
-            initial={{ opacity: 0, y: -20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 0.6 }}
-            className="h-18 w-full border-b shadow items-center justify-center bg-primary flex border-b-gray-300"
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <nav className="bg-primary w-full fixed z-50">
+      <div className="container mx-auto px-4 flex items-center justify-between h-16">
+        <div className="text-white text-lg font-bold flex items-center">
+            داروخانه دکتر مویدی
+            <img className="w-20 h-20" src={Logo} alt="" />    
+        </div>
+
+
+        <button
+          className="md:hidden text-white focus:outline-none"
+          onClick={() => setIsOpen(!isOpen)}
         >
-            <Container>
-                <div className="flex items-center justify-between flex-row-reverse">
-                    <ul className="flex flex-row-reverse space-x-reverse space-x-8">
-                        <motion.li 
-                            whileHover={{ scale: 1.1 }}
-                            className="text-gray-100 cursor-pointer"
-                        >خانه</motion.li>
-                        <motion.li 
-                            whileHover={{ scale: 1.1 }}
-                            className="text-gray-100 cursor-pointer"
-                        >درباره ما</motion.li>
-                        <motion.li 
-                            whileHover={{ scale: 1.1 }}
-                            className="text-gray-100 cursor-pointer"
-                        >ارتباط با ما</motion.li>
-                        <motion.li 
-                            whileHover={{ scale: 1.1 }}
-                            className="text-gray-100 cursor-pointer"
-                        >آدرس ما</motion.li>
-                    </ul>
-                </div>
-            </Container>
-        </motion.div>
-    );
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+
+        <div
+          className={`absolute top-16 left-0 w-full bg-primary md:static md:bg-transparent md:flex md:items-center md:justify-end md:w-auto transition-all duration-300 ease-in-out ${
+            isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          } md:max-h-full md:opacity-100 overflow-hidden`}
+        >
+          <ul className="flex flex-col md:flex-row-reverse md:items-center md:space-x-8">
+            <li>
+              <Link
+                to="home"
+                smooth={true}
+                duration={500}
+                offset={-70}
+                className="block py-2 px-4 text-white hover:text-teal-400 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                خانه
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="aboutus"
+                smooth={true}
+                duration={500}
+                offset={-70}
+                className="block py-2 px-4 text-white hover:text-teal-400 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                درباره ما
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="services"
+                smooth={true}
+                duration={500}
+                offset={-70}
+                className="block py-2 px-4 text-white hover:text-teal-400 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                خدمات ما
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="contact"
+                smooth={true}
+                duration={500}
+                offset={-70}
+                className="block py-2 px-4 text-white hover:text-teal-400 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                ارتباط با ما
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 }
